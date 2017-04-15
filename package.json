@@ -1,0 +1,28 @@
+{
+  "name": "nodeproxy",
+  "version": "1.0.0",
+  "description": "a proxy server using nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiranMantha/nodeProxy.git"
+  },
+  "author": "KiranMantha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiranMantha/nodeProxy/issues"
+  },
+  "homepage": "https://github.com/KiranMantha/nodeProxy#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "request-stats": "^2.0.1",
+    "throttle": "^1.0.3"
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h3>Proxy</h3>
+    <div>Request Count: <span id="requestCount">0</span>; Response Speed: <span id="responseSpeed">0</span>kbps</div>
+    <div>
+        <!--<form onsubmit="increaseRequestCount()">
+            
+        </form>-->
+        <input type="text" id="searchQuery" /> <button  onclick="increaseRequestCount()">Search</button>
+    </div>
+</body>
+<script>
+    
+    var getSearchResults = () => {
+        var q = $('#searchQuery').val(),
+        count = $('#requestCount').html();
+        $.ajax({
+            url: '/query',
+            type: 'GET',
+            data: {
+                query: q,
+                count: count
+            },
+            success: function (response) {
+                console.log(response);
+                $('#responseTime').html(response.rate);
+            }
+        });
+    }
+    var increaseRequestCount = () => {
+        $.ajaxSetup({ cache: false });
+        var k = parseInt($('#requestCount').html()) + 1;
+        $('#requestCount').html(k);
+        $('#requestCount').data("requestcount", k);
+        getSearchResults();
+    }
+</script>
+
+</html>
