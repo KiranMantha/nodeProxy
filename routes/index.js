@@ -39,4 +39,20 @@ router.route('/query').get((req, res) => {
     }).pipe(throttle).pipe(res);
 });
 
+router.route('/download').get((req, res)=>{
+    var k = req,
+        rate = 1,
+        throttle;
+    if (k.query.count < 2) {
+        rate = 1000;
+    } else {
+        rate = 10;
+    }
+    throttle = new Throttle(rate * 1024);
+    //uri = 'http://localhost:4000/Test_document_PDF.pdf'
+    request({
+        uri: 'http://localhost:4000/Test_document_PDF.pdf'
+    }).pipe(throttle).pipe(res);
+})
+
 module.exports = router;
